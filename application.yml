@@ -1,0 +1,37 @@
+server:
+  port: 8082
+logging:
+  level:
+    ROOT: info
+    web: info
+spring:
+  profiles:
+    active: dev
+    include:
+      - swagger
+  jackson:
+    serialisation:
+      FAIL_ON_EMPTY_BEANS: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/jwttest?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&serverTimezone=Europe/Paris
+    username: root
+    password: Martona78
+    driverClassName: com.mysql.jdbc.Driver
+    hikari:
+      auto-commit: false
+    open-in-view: true
+  jpa:
+    database: mysql
+    show-sql: false
+    properties:
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+      hibernate.query.substitutions: true=1, false=0
+      hibernate.dialect: org.hibernate.dialect.MySQL55Dialect
+      hibernate.jdbc.batch_size: 3000
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
